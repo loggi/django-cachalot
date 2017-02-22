@@ -1,2 +1,2 @@
-__version__ = (1, 0, 3)
-version_string = '.'.join(str(n) for n in __version__) + 'b-loggi'
+__version__ = (1, 0, 4)
+version_string = '.'.join(str(n) for n in __version__)
