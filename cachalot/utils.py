@@ -112,6 +112,10 @@ def _get_tables(query, db_alias):
         additional_tables = _get_tables_from_sql(connections[db_alias], sql)
         tables.update(additional_tables)
 
+    whitelist = cachalot_settings.CACHALOT_ONLY_CACHABLE_TABLES
+    if whitelist and not tables.issubset(whitelist):
+        raise UncachableQuery
+
     if not tables.isdisjoint(cachalot_settings.CACHALOT_UNCACHABLE_TABLES):
         raise UncachableQuery
     return tables
